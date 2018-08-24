@@ -1,0 +1,10 @@
+hash: df39ba84179a5bdb136dd0dcf10be5c35080d2bff644aa054a5f622bb7b448c4
+updated: 2018-08-24T15:31:59.704895+02:00
+imports:
+- name: github.com/buger/goterm
+  version: 6d19e6a8df12fdfc44a90a24b677a6d04a80b91f
+- name: golang.org/x/sys
+  version: 3b87a42e500a6dc65dae1a55d0b641295971163e
+  subpackages:
+  - unix
+testImports: []
