@@ -9,10 +9,12 @@ import (
 	"github.com/buger/goterm"
 )
 
+var Chars = []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}
+
 func New(message string) *Spinner {
 	s := &Spinner{
 		message:  message,
-		chars:    []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"},
+		chars:    Chars,
 		lock:     &sync.RWMutex{},
 		stopChan: make(chan struct{}, 1),
 	}
@@ -37,6 +39,13 @@ func (s *Spinner) Message(message string) {
 	s.message = message
 }
 
+func (s *Spinner) Chars(chars []string) {
+	s.lock.Lock()
+	defer s.lock.Unlock()
+
+	s.chars = chars
+}
+
 func (s *Spinner) start() *Spinner {
 	if s.isRunning {
 		return s
@@ -44,14 +53,6 @@ func (s *Spinner) start() *Spinner {
 	s.isRunning = true
 
 	s.hideCursor()
-
-	// interruptChan := make(chan os.Signal, 1)
-	// signal.Notify(interruptChan, os.Interrupt)
-	// go func() {
-	// 	<-interruptChan
-	// 	s.Stop()
-	// 	os.Exit(0)
-	// }()
 
 	go func() {
 		for {

@@ -67,3 +67,19 @@ time.Sleep(1 * time.Second)
 s.Done()
 ```
 
+## Options
+
+### Custom Chars
+
+Chars can be globally set for all spinners:
+
+```go
+spinner.Chars = []string{"-", "+", "-"}
+```
+
+... or for a specific spinner:
+
+```go
+s := spinner.New("One")
+s.Chars([]string{"-", "+", "-"})
+```
