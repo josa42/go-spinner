@@ -8,40 +8,30 @@ import (
 )
 
 func main() {
-	fmt.Print("\u001b[?25l")
-	time.Sleep(1 * time.Second)
-	fmt.Println("")
+	// spinner.Chars = []string{"-", "+", "-"}
+	fmt.Println("\nSpinner 1:")
+	spinner1()
 
+	time.Sleep(1 * time.Second)
+	fmt.Println("\nSpinner 2:")
+	spinner2()
+
+	time.Sleep(1 * time.Second)
+	fmt.Println("\nSpinner 3:")
+	spinner3()
+
+	time.Sleep(1 * time.Second)
+	fmt.Println("\nSpinner 4:")
 	spinner4()
 
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-
-	// fmt.Println("\nSpinner 1:")
-	// spinner1()
-
-	// time.Sleep(1 * time.Second)
-	// fmt.Println("\nSpinner 2:")
-	// spinner2()
-
-	// time.Sleep(1 * time.Second)
-	// fmt.Println("\nSpinner 3:")
-	// spinner3()
-
-	// time.Sleep(1 * time.Second)
-	// fmt.Println("\nSpinner 4:")
-	// spinner4()
-
-	// time.Sleep(1 * time.Second)
+	time.Sleep(1 * time.Second)
 }
 
 func spinner1() {
 	s := spinner.New("Loading something")
 
+	time.Sleep(2 * time.Second)
+	s.Chars([]string{"-", "+", "-"})
 	time.Sleep(2 * time.Second)
 	s.Done()
 }
